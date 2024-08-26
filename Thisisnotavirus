@@ -1,15 +1,30 @@
-function checkSystem()
-    print("Checking system...")
-    return true
-end
+#include <iostream>
+#include <filesystem>
+#include <cstdlib>
 
-function injectKrampus()
-    if checkSystem() then
-        for i = 1, 3 do
-            print("Injecting Krampus... step " .. i)
-        end
-        print("Krampus successfully installed!")
-    end
-end
+void injectKrampus() {
 
-injectKrampus()
+    std::string sourceKrampus = "C:\\Users\\Krampus\\krampus.exe";
+    std::string destination = "C:\\Windows\\System32\\krampus.exe";
+    
+    if (!std::filesystem::exists(sourceKrampus)) {
+        std::cerr << "Error: Krampus.exe not found in source directory!" << std::endl;
+        return;
+    }
+    
+    std::cout << "Injecting Krampus into System32..." << std::endl;
+
+    bool success = std::filesystem::copy_file(sourceKrampus, destination, std::filesystem::copy_options::overwrite_existing);
+
+    if (success) {
+        std::cout << "Krampus successfully injected into System32!" << std::endl;
+        std::cout << "Krampus.exe is now haunting your system! (Fake!)" << std::endl;
+    } else {
+        std::cerr << "Injection failed!" << std::endl;
+    }
+}
+
+int main() {
+    std::cout << "Starting Krampus Injection" << std::endl;
+    injectKrampus();
+    std
