@@ -1,0 +1,15 @@
+function checkSystem()
+    print("Checking system...")
+    return true
+end
+
+function injectKrampus()
+    if checkSystem() then
+        for i = 1, 3 do
+            print("Injecting Krampus... step " .. i)
+        end
+        print("Krampus successfully installed!")
+    end
+end
+
+injectKrampus()
